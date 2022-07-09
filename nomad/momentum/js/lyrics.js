@@ -1,7 +1,7 @@
 const lyrics = [
   {
     number: "Popular",
-    lines: "You'll be popular! Just not quite as popular as me!"
+    line: "You'll be popular! Just not quite as popular as me."
   },
   {
     number: "Dancing Throught Life",

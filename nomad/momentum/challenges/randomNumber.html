@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vanilla Challenge 7</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <h1>Random Number Game</h1>
+    <h2>
+      Generate a number between 0 and
+      <input id="inputMax" type="number" min="0" />
+    </h2>
+
+    <form>
+      <div id="playWrap">
+        Guess the number:
+        <input id="inputGuess" type="number" min="0" />
+        <button>Play!</button>
+      </div>
+    </form>
+
+    <div id="compareWrap"></div>
+    <div id="resultWrap"></div>
+
+    <script>
+      const playForm = document.querySelector("form");
+      const compareWrap = document.querySelector("#compareWrap");
+      const resultWrap = document.querySelector("#resultWrap");
+
+      const playGame = function (e) {
+        e.preventDefault();
+
+        const maxNumber = parseInt(document.querySelector("#inputMax").value, 10);
+        const guessNumber = parseInt(document.querySelector("#inputGuess").value, 10);
+
+        if (isNaN(maxNumber)) {
+          alert("Inser a number properly to set the limit");
+        } else if (isNaN(guessNumber)) {
+          alert("Insert a number properly to guess!");
+        } else if (maxNumber < 0 || guessNumber < 0) {
+          alert("Positive numbers only!");
+        } else {
+          const machineNumber = Math.floor(Math.random() * (maxNumber + 1));
+          compareWrap.innerHTML = `You chose: ${guessNumber}, the machine chose: ${machineNumber}`;
+
+          if (guessNumber === machineNumber) {
+            resultWrap.innerHTML = `<strong>You Won!</strong>`;
+          } else {
+            resultWrap.innerHTML = `<strong>You Lost!</strong>`;
+          }
+        }
+      };
+
+      playForm.addEventListener("submit", playGame);
+    </script>
+  </body>
+</html>
